@@ -1,8 +1,10 @@
 import React from 'react';
 
-export const PhotoFrame = (url,title) => {
-   <>
+export const PhotoFrame = ({url,title}) => {
+   return(
+   <div>
    <img src={url} />
-   <p>{tittle}</p>
-   </>
+   <p>{title}</p>
+   </div>
+   )
 }
