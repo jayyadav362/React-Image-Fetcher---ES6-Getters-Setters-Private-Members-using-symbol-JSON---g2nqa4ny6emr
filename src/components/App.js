@@ -3,7 +3,6 @@ import '../styles/App.css';
 import { Loader } from './Loader';
 import { PhotoFrame } from './PhotoFrame';
 const App = () => {
-    const [id,setId] = useState(null)
     const [data,setData] = useState([])
     const [loading,setLoading] = useState(false)
     const getData =(id)=>{
@@ -23,18 +22,15 @@ const App = () => {
     console.log(data)  
     // const idHandle=(id)=>{
     //   setId(id)
-    // }  
-    useEffect(()=>{
-        getData(id)
-    },[id])
+    // } 
   return(
     <div>
     <label>Id number</label>
-    <input type='number' onChange={(e)=>setId(e.target.value)} min={1} max={5000} />
+    <input type='number' onChange={(e)=>getData(e.target.value)} min={1} max={5000} />
     {loading?
      <Loader /> 
      :
-     <PhotoFrame url={data?.url} title={data?.title} />
+     data?.url && <PhotoFrame url={data?.url} title={data?.title} />
      }
     </div>
   )
